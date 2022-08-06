@@ -19,8 +19,8 @@ const bot = async () => {
   await page.goto("https://oscercomp.ufj.edu.br/front/ticket.php", {
     waitUntil: "networkidle2",
   });
-  await page.type(login_input_path, process.env.LOGIN_NAME);
-  await page.type(password_input_path, process.env.PASSWORD);
+  await page.type(login_input_path, 'victor_lucca');
+  await page.type(password_input_path, '@Vic081000');
   await page.click(submit_button_path);
   await page.waitForSelector(span_id_path);
   let element = await page.$(span_id_path);
