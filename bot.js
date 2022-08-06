@@ -1,7 +1,7 @@
 const puppeteer = require("puppeteer");
 
 const bot = async () => {
-  const browser = puppeteer.launch({
+  const browser = await puppeteer.launch({
     headless: true,
     args: ["--no-sandbox"],
   });
