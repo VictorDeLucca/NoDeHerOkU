@@ -23,7 +23,7 @@ let page;
 const bot = async () => {
   (async () => {
     const browser = await puppeteer.launch({
-      headless: false,
+      headless: true,
       args: ["--no-sandbox"],
     });
     page = await browser.newPage();
