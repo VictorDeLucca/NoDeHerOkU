@@ -1,8 +1,9 @@
 const puppeteer = require("puppeteer");
 require("dotenv/config");
 const {
-  Webhook
-} = require("discord-webhook-node");
+  Webhook,
+  MessageBuilder
+} = require("discord-webhook-node");;
 const hook = new Webhook(
   "https://discord.com/api/webhooks/1004372604573982791/FGGKA7dHCbVZ4pknvEOjul7ShbgEmcTWdLM8oBqOryOeVlfmvA4ZG7TlOkyfNBSEX39u"
 );
@@ -43,6 +44,7 @@ const bot = async () => {
     await page.click("thead > tr > th:nth-child(2)");
 
     setInterval(async () => {
+      // console.log('ok')
       await page.reload();
       await page.waitForSelector(span_id_path);
       let element = await page.$(span_id_path);
@@ -51,7 +53,7 @@ const bot = async () => {
 
 
       if (b < a) {
-        notifier.notify("Chamado novo");
+        // notifier.notify("Chamado novo");
         await page.waitForSelector(`#Ticket${a}`)
         let el = await page.$(`#Ticket${a}`);
         let t = await page.evaluate((el) => el.textContent, el);
@@ -69,7 +71,7 @@ const bot = async () => {
         hook.send(embed);
         b = a;
       }
-    }, 60000);
+    }, 10000);
 
   })();
 
